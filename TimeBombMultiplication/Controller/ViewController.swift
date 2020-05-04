@@ -42,7 +42,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         displayQuestion()
         calculateAnswer()
-        newGameButton.layer.cornerRadius = 15
         userAnswerTextField.isEnabled = false
 
         self.userAnswerTextField.addInputAccessoryView(title: "Done", target: self, selector: #selector(tapDone))
@@ -84,6 +83,8 @@ class ViewController: UIViewController {
     
     @IBAction func newGameButtonPressed(_ sender: UIButton) {
         userAnswerTextField.isEnabled = true
+        score = 0
+        scoreLabel.text = "score: \(score)"
         runTimer()
     }
     
@@ -96,12 +97,15 @@ class ViewController: UIViewController {
         if timerDuration > 0 {
             timerDuration -= 1
             timerLabel.text = "\(timerDuration)"
+            newGameButton.isHidden = true
         } else {
             play(sound: "alarm")
             timer.invalidate()
             userAnswerTextField.resignFirstResponder()
             timerDuration = 60
             userAnswerTextField.isEnabled = false
+            newGameButton.isHidden = false
+
 
         }
     }
