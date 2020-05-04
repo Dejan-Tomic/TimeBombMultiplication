@@ -16,19 +16,19 @@ extension UITextField {
         let toolBar = UIToolbar(frame: CGRect(x: 0.0,
                                               y: 0.0,
                                               width: UIScreen.main.bounds.size.width,
-                                              height: 44.0))//1
-        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)//2
-        let barButton = UIBarButtonItem(title: title, style: .plain, target: target, action: selector)//3
-        toolBar.setItems([flexible, barButton], animated: false)//4
-        self.inputAccessoryView = toolBar//5
+                                              height: 44.0))
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let barButton = UIBarButtonItem(title: title, style: .plain, target: target, action: selector)
+        toolBar.setItems([flexible, barButton], animated: false)
+        self.inputAccessoryView = toolBar
     }
 }
 
- var player: AVAudioPlayer?
- var timer = Timer()
+var player: AVAudioPlayer?
+var timer = Timer()
 
 class ViewController: UIViewController {
-   
+    
     @IBOutlet weak var firstNumberLabel: UILabel!
     @IBOutlet weak var secondNumberLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
@@ -43,9 +43,8 @@ class ViewController: UIViewController {
         displayQuestion()
         calculateAnswer()
         userAnswerTextField.isEnabled = false
-
         self.userAnswerTextField.addInputAccessoryView(title: "Done", target: self, selector: #selector(tapDone))
-
+        timerLabel.text = "\(timerDuration)"
     }
     
     @objc func tapDone() {
@@ -56,8 +55,7 @@ class ViewController: UIViewController {
         userAnswerTextField.text = ""
     }
     
-
-
+    
     func checkAnswer() {
         if userAnswerTextField.text == String(correctAnswer) {
             print("correct")
@@ -70,7 +68,7 @@ class ViewController: UIViewController {
         }
         scoreLabel.text = "score: \(score)"
         setHighScore()
-
+        
     }
     
     func displayQuestion() {
@@ -90,9 +88,9 @@ class ViewController: UIViewController {
     
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
-            }
+    }
     
-     
+    
     @objc func updateTimer() {
         if timerDuration > 0 {
             timerDuration -= 1
@@ -105,8 +103,8 @@ class ViewController: UIViewController {
             timerDuration = 60
             userAnswerTextField.isEnabled = false
             newGameButton.isHidden = false
-
-
+            setHighScore()
+            newHighScoreAlert()
         }
     }
     
@@ -122,12 +120,19 @@ class ViewController: UIViewController {
             // couldn't load file :(
             print("Problem during playback")
         }
-
-        
     }
     
- 
     
+    
+    func newHighScoreAlert() {
+        if score > highscore {
+            let alert = UIAlertController(title: "Congratulations!", message: "You've reached a new high score!", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
     
     
 }
+ 

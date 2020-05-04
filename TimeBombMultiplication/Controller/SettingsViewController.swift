@@ -46,11 +46,17 @@ class SettingsViewController: UIViewController {
     @IBAction func durationSelected(_ sender: UISegmentedControl) {
         switch durationSegementedControl.selectedSegmentIndex {
         case 0: print("1 minute")
+                timerDuration = 60
         case 1: print("2 minutes")
+                timerDuration = 120
         case 2: print("5 minutes")
+                timerDuration = 300
         case 3: print("10 minutes")
+                timerDuration = 600
         default: print("error")
         }
+        print("\(timerDuration)")
+
     }
     
     
