@@ -13,6 +13,11 @@
 		FA307C0E245EF79D007E6E09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA307C0C245EF79D007E6E09 /* Main.storyboard */; };
 		FA307C10245EF7A0007E6E09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA307C0F245EF7A0007E6E09 /* Assets.xcassets */; };
 		FA307C13245EF7A0007E6E09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA307C11245EF7A0007E6E09 /* LaunchScreen.storyboard */; };
+		FA3F83B224609893006A3FB3 /* wrongAnswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA3F83B024609893006A3FB3 /* wrongAnswer.mp3 */; };
+		FA3F83B324609893006A3FB3 /* rightAnswer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA3F83B124609893006A3FB3 /* rightAnswer.mp3 */; };
+		FA4088F6245F2FAE0063ED23 /* alarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FA4088F5245F2FAE0063ED23 /* alarm.mp3 */; };
+		FAD52753245F21BF00C1E21B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD52752245F21BF00C1E21B /* Model.swift */; };
+		FADBF223245F1E7D00D9DE78 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADBF222245F1E7D00D9DE78 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		FA307C0F245EF7A0007E6E09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA307C12245EF7A0007E6E09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA307C14245EF7A0007E6E09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA3F83B024609893006A3FB3 /* wrongAnswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wrongAnswer.mp3; sourceTree = "<group>"; };
+		FA3F83B124609893006A3FB3 /* rightAnswer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rightAnswer.mp3; sourceTree = "<group>"; };
+		FA4088F5245F2FAE0063ED23 /* alarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm.mp3; sourceTree = "<group>"; };
+		FAD52752245F21BF00C1E21B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		FADBF222245F1E7D00D9DE78 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +68,43 @@
 			children = (
 				FA307C06245EF79D007E6E09 /* AppDelegate.swift */,
 				FA307C08245EF79D007E6E09 /* SceneDelegate.swift */,
-				FA307C0A245EF79D007E6E09 /* ViewController.swift */,
-				FA307C0C245EF79D007E6E09 /* Main.storyboard */,
+				FAD52751245F21A000C1E21B /* Model */,
+				FADBF224245F1E9700D9DE78 /* View */,
+				FADBF221245F1E6400D9DE78 /* Controller */,
 				FA307C0F245EF7A0007E6E09 /* Assets.xcassets */,
 				FA307C11245EF7A0007E6E09 /* LaunchScreen.storyboard */,
 				FA307C14245EF7A0007E6E09 /* Info.plist */,
+				FA4088F5245F2FAE0063ED23 /* alarm.mp3 */,
+				FA3F83B124609893006A3FB3 /* rightAnswer.mp3 */,
+				FA3F83B024609893006A3FB3 /* wrongAnswer.mp3 */,
 			);
 			path = TimeBombMultiplication;
+			sourceTree = "<group>";
+		};
+		FAD52751245F21A000C1E21B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FAD52752245F21BF00C1E21B /* Model.swift */,
+			);
+			name = Model;
+			path = View;
+			sourceTree = "<group>";
+		};
+		FADBF221245F1E6400D9DE78 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FA307C0A245EF79D007E6E09 /* ViewController.swift */,
+				FADBF222245F1E7D00D9DE78 /* SettingsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		FADBF224245F1E9700D9DE78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA307C0C245EF79D007E6E09 /* Main.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,9 +165,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4088F6245F2FAE0063ED23 /* alarm.mp3 in Resources */,
 				FA307C13245EF7A0007E6E09 /* LaunchScreen.storyboard in Resources */,
 				FA307C10245EF7A0007E6E09 /* Assets.xcassets in Resources */,
 				FA307C0E245EF79D007E6E09 /* Main.storyboard in Resources */,
+				FA3F83B224609893006A3FB3 /* wrongAnswer.mp3 in Resources */,
+				FA3F83B324609893006A3FB3 /* rightAnswer.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +184,8 @@
 				FA307C0B245EF79D007E6E09 /* ViewController.swift in Sources */,
 				FA307C07245EF79D007E6E09 /* AppDelegate.swift in Sources */,
 				FA307C09245EF79D007E6E09 /* SceneDelegate.swift in Sources */,
+				FAD52753245F21BF00C1E21B /* Model.swift in Sources */,
+				FADBF223245F1E7D00D9DE78 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
