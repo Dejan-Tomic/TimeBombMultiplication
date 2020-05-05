@@ -8,17 +8,6 @@
 
 import UIKit
 
-var seconds = 0
-var timerDuration = 60
-var userAnswer = 0
-var firstNumber = 0
-var secondNumber = 0
-var correctAnswer = 0
-var score = 0
-var selectedDifficulty = 0
-
-var highscore = highScoreUserDefault.integer(forKey: "highScoreUserDefault")
-
 class SettingsViewController: UIViewController {
 
     @IBOutlet weak var highScoreLabel: UILabel!

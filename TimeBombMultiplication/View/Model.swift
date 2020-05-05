@@ -7,9 +7,25 @@
 //
 
 import Foundation
-var highScoreUserDefault = UserDefaults.standard
+import AVFoundation
 
+var highScoreUserDefault = UserDefaults.standard
 var chosenDifficulty = "easy"
+var player: AVAudioPlayer?
+var timer = Timer()
+
+var seconds = 0
+var timerDuration = 60
+var userAnswer = 0
+var firstNumber = 0
+var secondNumber = 0
+var correctAnswer = 0
+var score = 0
+var selectedDifficulty = 0
+
+var highscore = highScoreUserDefault.integer(forKey: "highScoreUserDefault")
+
+
 
 func setHighScore() {
     if score > highscore {
@@ -48,3 +64,17 @@ func nextQuestion(difficulty: String) {
     
 }
 
+
+func play(sound: String) {
+    let path = Bundle.main.path(forResource: "\(sound).mp3", ofType: nil)!
+    let url = URL(fileURLWithPath: path)
+    
+    do {
+        player = try AVAudioPlayer(contentsOf: url)
+        player?.play()
+        
+    } catch {
+        // couldn't load file :(
+        print("Problem during playback")
+    }
+}

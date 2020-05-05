@@ -13,19 +13,13 @@ extension UITextField {
     
     func addInputAccessoryView(title: String, target: Any, selector: Selector) {
         
-        let toolBar = UIToolbar(frame: CGRect(x: 0.0,
-                                              y: 0.0,
-                                              width: UIScreen.main.bounds.size.width,
-                                              height: 44.0))
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 44.0))
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let barButton = UIBarButtonItem(title: title, style: .plain, target: target, action: selector)
         toolBar.setItems([flexible, barButton], animated: false)
         self.inputAccessoryView = toolBar
     }
 }
-
-var player: AVAudioPlayer?
-var timer = Timer()
 
 class ViewController: UIViewController {
     
@@ -107,21 +101,6 @@ class ViewController: UIViewController {
             newHighScoreAlert()
         }
     }
-    
-    func play(sound: String) {
-        let path = Bundle.main.path(forResource: "\(sound).mp3", ofType: nil)!
-        let url = URL(fileURLWithPath: path)
-        
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-            player?.play()
-            
-        } catch {
-            // couldn't load file :(
-            print("Problem during playback")
-        }
-    }
-    
     
     
     func newHighScoreAlert() {
