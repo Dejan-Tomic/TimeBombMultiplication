@@ -22,6 +22,7 @@ var secondNumber = 0
 var correctAnswer = 0
 var score = 0
 var selectedDifficulty = 0
+var selectedDuration = 0
 
 var highscore = highScoreUserDefault.integer(forKey: "highScoreUserDefault")
 
@@ -63,6 +64,7 @@ func nextQuestion(difficulty: String) {
     }
     
 }
+
 
 
 func play(sound: String) {

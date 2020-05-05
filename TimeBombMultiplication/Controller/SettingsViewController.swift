@@ -17,7 +17,9 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayHighScore()
-    }
+        durationSegementedControl.selectedSegmentIndex = selectedDuration
+        difficultyLabel.selectedSegmentIndex = selectedDifficulty
+        }
     
     func displayHighScore() {
         highScoreLabel.text = "High score: \(highscore)"
@@ -36,16 +38,21 @@ class SettingsViewController: UIViewController {
         switch durationSegementedControl.selectedSegmentIndex {
         case 0: print("1 minute")
                 timerDuration = 60
+                selectedDuration = 0
+
         case 1: print("2 minutes")
                 timerDuration = 120
+                selectedDuration = 1
         case 2: print("5 minutes")
                 timerDuration = 300
+                selectedDuration = 2
         case 3: print("10 minutes")
                 timerDuration = 600
+                selectedDuration = 3
         default: print("error")
+                selectedDuration = 0
         }
         print("\(timerDuration)")
-
     }
     
     

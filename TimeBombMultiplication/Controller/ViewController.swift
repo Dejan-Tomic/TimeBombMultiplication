@@ -38,8 +38,17 @@ class ViewController: UIViewController {
         calculateAnswer()
         userAnswerTextField.isEnabled = false
         self.userAnswerTextField.addInputAccessoryView(title: "Done", target: self, selector: #selector(tapDone))
-        timerLabel.text = "\(timerDuration)"
+//        timerLabel.text = "\(timerDuration)"
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+                timerLabel.text = "\(timerDuration)"
+
+    }
+    
+
+    
+    
     
     @objc func tapDone() {
         self.view.endEditing(true)
