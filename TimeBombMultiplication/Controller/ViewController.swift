@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var userAnswerTextField: UITextField!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var newGameButton: UIButton!
-    
+    @IBOutlet weak var settingsButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,19 +38,14 @@ class ViewController: UIViewController {
         calculateAnswer()
         userAnswerTextField.isEnabled = false
         self.userAnswerTextField.addInputAccessoryView(title: "Done", target: self, selector: #selector(tapDone))
-//        timerLabel.text = "\(timerDuration)"
+        timerLabel.text = "\(timerDuration)"
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-                timerLabel.text = "\(timerDuration)"
-
-    }
-    
-
     
     
+        
     
-    @objc func tapDone() {
+    @objc func tapDone() { 
         self.view.endEditing(true)
         checkAnswer()
         displayQuestion()
@@ -70,7 +65,8 @@ class ViewController: UIViewController {
             play(sound: "wrongAnswer")
         }
         scoreLabel.text = "score: \(score)"
-        setHighScore()
+//        setHighScore()
+        checkScoreAgainstHighScore()
         
     }
     
@@ -99,6 +95,7 @@ class ViewController: UIViewController {
             timerDuration -= 1
             timerLabel.text = "\(timerDuration)"
             newGameButton.isHidden = true
+            settingsButton.isEnabled = false
         } else {
             play(sound: "alarm")
             timer.invalidate()
@@ -106,6 +103,8 @@ class ViewController: UIViewController {
             timerDuration = 60
             userAnswerTextField.isEnabled = false
             newGameButton.isHidden = false
+            settingsButton.isEnabled = true
+
             setHighScore()
             newHighScoreAlert()
         }

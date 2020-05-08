@@ -17,13 +17,43 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayHighScore()
-        durationSegementedControl.selectedSegmentIndex = selectedDuration
-        difficultyLabel.selectedSegmentIndex = selectedDifficulty
+        durationSegementedControl.selectedSegmentIndex = durationUserDefault.integer(forKey: "durationUserDefault")
+        difficultyLabel.selectedSegmentIndex = difficultyUserDefault.integer(forKey: "difficultyUserDefault")
+        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
         }
     
+    
+    
+    
     func displayHighScore() {
-        highScoreLabel.text = "High score: \(highscore)"
+//        highScoreLabel.text = "High score: \(highscore)"
+        switch (timerDuration, chosenDifficulty) {
+            case (60, "easy") : highScoreLabel.text = "High score: \(oneMinuteEasyHighScore)"
+            case (120, "easy"): highScoreLabel.text = "High score: \(twoMinutesEasyHighScore)"
+            case (300, "easy"): highScoreLabel.text = "High score: \(fiveMinutesEasyHighScore)"
+            case (600, "easy"): highScoreLabel.text = "High score: \(tenMinutesEasyHighScore)"
+            
+            case (60, "medium"): highScoreLabel.text = "High score: \(oneMinuteMediumHighScore)"
+            case (120, "medium"): highScoreLabel.text = "High score: \(twoMinutesMediumHighScore)"
+            case (300, "medium"): highScoreLabel.text = "High score: \(fiveMinutesMediumHighScore)"
+            case (600, "medium"): highScoreLabel.text = "High score: \(tenMinutesMediumHighScore)"
+
+            case (60, "hard"): highScoreLabel.text = "High score: \(oneMinuteHardHighScore)"
+            case (120, "hard"): highScoreLabel.text = "High score: \(twoMinutesHardHighScore)"
+            case (300, "hard"): highScoreLabel.text = "High score: \(fiveMinutesHardHighScore)"
+            case (600, "hard"): highScoreLabel.text = "High score: \(tenMinutesHardHighScore)"
+
+            case (60, "expert"): highScoreLabel.text = "High score: \(oneMinuteExpertHighScore)"
+            case (120, "expert"): highScoreLabel.text = "High score: \(twoMinuteExpertHighScore)"
+            case (300, "expert"): highScoreLabel.text = "High score: \(fiveMinuteExpertHighScore)"
+            case (600, "expert"): highScoreLabel.text = "High score: \(tenMinuteExpertHighScore)"
+
+            default: print("Error in game settings switch")
+        }
     }
+    
+    
+
     
     
     @IBAction func resetHighscore(_ sender: UIButton) {
@@ -52,7 +82,8 @@ class SettingsViewController: UIViewController {
         default: print("error")
                 selectedDuration = 0
         }
-        print("\(timerDuration)")
+        durationUserDefault.set(selectedDuration, forKey: "durationUserDefault")
+        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
     }
     
     
@@ -69,6 +100,10 @@ class SettingsViewController: UIViewController {
                 selectedDifficulty = 3
         default: chosenDifficulty = "easy"
         }
+        
+        difficultyUserDefault.set(selectedDifficulty, forKey: "difficultyUserDefault")
+        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
+
     }
     
     

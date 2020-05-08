@@ -177,6 +177,7 @@
                         <outlet property="newGameButton" destination="ONm-Ob-rTe" id="ce1-mf-O6h"/>
                         <outlet property="scoreLabel" destination="Em5-Ko-nEe" id="1J1-QA-VuS"/>
                         <outlet property="secondNumberLabel" destination="jY6-7N-iZD" id="Ajm-II-mth"/>
+                        <outlet property="settingsButton" destination="qbF-sf-ML4" id="m9q-mp-iWZ"/>
                         <outlet property="timerLabel" destination="F9t-Ns-Wzg" id="MqQ-r7-bgE"/>
                         <outlet property="userAnswerTextField" destination="NmZ-0V-A5H" id="Z3H-dt-NUF"/>
                     </connections>
