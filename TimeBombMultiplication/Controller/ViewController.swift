@@ -21,8 +21,11 @@ extension UITextField {
     }
 }
 
+//var timePassed = timerDuration
+
+
 class ViewController: UIViewController {
-    
+
     @IBOutlet weak var firstNumberLabel: UILabel!
     @IBOutlet weak var secondNumberLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
@@ -47,29 +50,25 @@ class ViewController: UIViewController {
     func printHighScores() {
 //        print("High score is \(highscore)")
 
-        print("1 minute easy score is \(oneMinuteEasyHighScore)") // Should be 23
-        print("1 minute medium score is \(oneMinuteMediumHighScore)") // Should be 5
+        print("1 minute easy score is \(oneMinuteEasyHighScore)") // Should be 25
+        print("1 minute medium score is \(oneMinuteMediumHighScore)") // Should be 6
         print("1 minute hard score is \(oneMinuteHardHighScore)") // Should be 8
-        print("1 minute expert score is \(oneMinuteExpertHighScore)") // Should be 6 or 9?
+        print("1 minute expert score is \(oneMinuteExpertHighScore)") // Should be 11
 
-        print("2 minutes easy score is \(twoMinutesEasyHighScore)") // Should be 0
-        print("2 minutes medium score is \(twoMinutesMediumHighScore)") // Should be 0
-        print("2 minutes hard score is \(twoMinutesHardHighScore)") // Should be 0 10
-        print("2 minutes expert score is \(twoMinuteExpertHighScore)") // Inccorectly saves to 1 min expert
+        print("2 minutes easy score is \(twoMinutesEasyHighScore)") // Should be 27
+        print("2 minutes medium score is \(twoMinutesMediumHighScore)") // Should be 7
+        print("2 minutes hard score is \(twoMinutesHardHighScore)") // Should be 9
+        print("2 minutes expert score is \(twoMinuteExpertHighScore)") // Should be 15
         
-        print("5 minutes easy score is \(fiveMinutesEasyHighScore)") // Should be 0
-        print("5 minutes medium score is \(fiveMinutesMediumHighScore)") // Should be 0
-        print("5 minutes hard score is \(fiveMinutesHardHighScore)") // Should be 0
-        print("5 minutes expert score is \(fiveMinuteExpertHighScore)") // Should be 0
-        
-        print("10 minutes easy score is \(tenMinutesEasyHighScore)") // Should be 0
-        print("10 minutes medium score is \(tenMinutesMediumHighScore)") // Should be 0
-        print("10 minutes hard score is \(tenMinutesHardHighScore)") // Should be 0
-        print("10 minutes expert score is \(tenMinuteExpertHighScore)") // Should be 0
-
-
-
-
+        print("5 minutes easy score is \(fiveMinutesEasyHighScore)") // Should be 30
+        print("5 minutes medium score is \(fiveMinutesMediumHighScore)") // Should be 12
+        print("5 minutes hard score is \(fiveMinutesHardHighScore)") // Should be 10
+        print("5 minutes expert score is \(fiveMinuteExpertHighScore)") // Should be 16
+          
+        print("10 minutes easy score is \(tenMinutesEasyHighScore)") // Should be 32
+        print("10 minutes medium score is \(tenMinutesMediumHighScore)") // Should be 14
+        print("10 minutes hard score is \(tenMinutesHardHighScore)") // Should be 13
+        print("10 minutes expert score is \(tenMinuteExpertHighScore)") // Should be 17
     }
     
         
@@ -116,20 +115,22 @@ class ViewController: UIViewController {
     
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
+        
     }
     
     
     @objc func updateTimer() {
-        if timerDuration > 0 {
-            timerDuration -= 1
-            timerLabel.text = "\(timerDuration)"
+        
+        if timeLeft > 0 {
+            timeLeft -= 1
+            timerLabel.text = "\(timeLeft)"
             newGameButton.isHidden = true
             settingsButton.isEnabled = false
         } else {
             play(sound: "alarm")
             timer.invalidate()
             userAnswerTextField.resignFirstResponder()
-            timerDuration = 60
+            timeLeft = timerDuration
             userAnswerTextField.isEnabled = false
             newGameButton.isHidden = false
             settingsButton.isEnabled = true

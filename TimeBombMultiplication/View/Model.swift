@@ -21,6 +21,7 @@ var timer = Timer()
 
 var seconds = 0
 var timerDuration = 60
+var timeLeft = timerDuration
 var userAnswer = 0
 var firstNumber = 0
 var secondNumber = 0
@@ -83,9 +84,9 @@ func checkScoreAgainstHighScore() {
         case (600, "hard"): updateHighScore(currentHighScore: tenMinutesHardHighScore, userDefaultKey: "tenMinutesHardHighScoreUserDefault")
 
         case (60, "expert"): updateHighScore(currentHighScore: oneMinuteExpertHighScore, userDefaultKey: "oneMinuteExpertHighScoreUserDefault")
-        case (120, "expert"): updateHighScore(currentHighScore: twoMinuteExpertHighScore, userDefaultKey: "twoMinuteExpertHighScoreUserDefault")
-        case (300, "expert"): updateHighScore(currentHighScore: fiveMinuteExpertHighScore, userDefaultKey: "fiveMinuteExpertHighScoreUserDefault")
-        case (600, "expert"): updateHighScore(currentHighScore: tenMinuteExpertHighScore, userDefaultKey: "tenMinuteExpertHighScoreUserDefault")
+        case (120, "expert"): updateHighScore(currentHighScore: twoMinuteExpertHighScore, userDefaultKey: "twoMinutesExpertHighScoreUserDefault")
+        case (300, "expert"): updateHighScore(currentHighScore: fiveMinuteExpertHighScore, userDefaultKey: "fiveMinutesExpertHighScoreUserDefault")
+        case (600, "expert"): updateHighScore(currentHighScore: tenMinuteExpertHighScore, userDefaultKey: "tenMinutesExpertHighScoreUserDefault")
 
         default: print("Error in game settings switch")
     }
@@ -100,25 +101,28 @@ func calculateAnswer() {
 
 
 func nextQuestion(difficulty: String) {
+    let easyArray = [2,5,10]
+    let mediumArray = [3,4,8]
+
     switch difficulty {
     case "easy":
-        firstNumber = Int.random(in: 1...12)
+        firstNumber = easyArray.randomElement()!
         secondNumber = Int.random(in: 1...12)
         
     case "medium":
-        firstNumber = Int.random(in: 1...12)
-        secondNumber = Int.random(in: 13...99)
+        firstNumber = mediumArray.randomElement()!
+        secondNumber = Int.random(in: 1...12)
         
     case "hard":
-        firstNumber = Int.random(in: 13...99)
-        secondNumber = Int.random(in: 13...99)
+        firstNumber = Int.random(in: 1...12)
+        secondNumber = Int.random(in: 1...12)
         
     case "expert":
-        firstNumber = Int.random(in: 100...999)
-        secondNumber = Int.random(in: 11...99)
-        
+        firstNumber = Int.random(in: 12...99)
+        secondNumber = Int.random(in: 12...99)
+
     default:
-        firstNumber = Int.random(in: 1...12)
+        firstNumber = easyArray.randomElement()!
         secondNumber = Int.random(in: 1...12)
     }
     
@@ -154,31 +158,31 @@ func gameSettings(timeSetting: Int, difficultySetting: String) {
 
 
 
-func saveGameSettings(timeSetting: Int, difficultySetting: String) {
-    switch (timeSetting, difficultySetting) {
-    case (60, "easy") : gameSettingsUserDefault.set(selectedDuration, forKey: "oneMinuteEasyGame")
-    case (120, "easy"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesEasyGame")
-    case (300, "easy"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesEasyGame")
-    case (600, "easy"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesEasyGame")
-    
-    case (60, "medium"): print("60 medium")
-    case (120, "medium"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesMediumGame")
-    case (300, "medium"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesMediumGame")
-    case (600, "medium"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesMediumGame")
-
-    case (60, "hard"): print("60 hard")
-    case (120, "hard"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesHardGame")
-    case (300, "hard"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesHardGame")
-    case (600, "hard"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesHardGame")
-
-    case (60, "expert"): print("60 expert")
-    case (120, "expert"): print("120 expert")
-    case (300, "expert"): print("300 expert")
-    case (600, "expert"): print("600 expert")
-
-    default: print("Error in game settings switch")
-}
-}
+//func saveGameSettings(timeSetting: Int, difficultySetting: String) {
+//    switch (timeSetting, difficultySetting) {
+//    case (60, "easy") : gameSettingsUserDefault.set(selectedDuration, forKey: "oneMinuteEasyGame")
+//    case (120, "easy"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesEasyGame")
+//    case (300, "easy"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesEasyGame")
+//    case (600, "easy"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesEasyGame")
+//    
+//    case (60, "medium"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesMediumGame")
+//    case (120, "medium"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesMediumGame")
+//    case (300, "medium"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesMediumGame")
+//    case (600, "medium"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesMediumGame")
+//        
+//    case (60, "hard"):  gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesHardGame")
+//    case (120, "hard"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesHardGame")
+//    case (300, "hard"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesHardGame")
+//    case (600, "hard"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesHardGame")
+//
+//    case (60, "expert"): print("60 expert")
+//    case (120, "expert"): print("120 expert")
+//    case (300, "expert"): print("300 expert")
+//    case (600, "expert"): print("600 expert")
+//
+//    default: print("Error in game settings switch")
+//}
+//}
 
 
 
