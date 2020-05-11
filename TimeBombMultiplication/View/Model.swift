@@ -29,8 +29,8 @@ var correctAnswer = 0
 var score = 0
 var selectedDifficulty = 0
 var selectedDuration = 0
-
-var highscore = highScoreUserDefault.integer(forKey: "highScoreUserDefault")
+var currentHighScore = 0
+var currentUserDefaultKey = ""
 
 var oneMinuteEasyHighScore = highScoreUserDefault.integer(forKey: "oneMinuteEasyHighScoreUserDefault")
 var twoMinutesEasyHighScore = highScoreUserDefault.integer(forKey: "twoMinutesEasyHighScoreUserDefault")
@@ -52,19 +52,38 @@ var twoMinuteExpertHighScore = highScoreUserDefault.integer(forKey: "twoMinutesE
 var fiveMinuteExpertHighScore = highScoreUserDefault.integer(forKey: "fiveMinutesExpertHighScoreUserDefault")
 var tenMinuteExpertHighScore = highScoreUserDefault.integer(forKey: "tenMinutesExpertHighScoreUserDefault")
 
-
-
-func setHighScore() {
-    if score > highscore {
-        highScoreUserDefault.set(score, forKey: "highScoreUserDefault")
-    }
-}
-
 func updateHighScore(currentHighScore: Int, userDefaultKey: String) {
     if score > currentHighScore {
         highScoreUserDefault.set(score, forKey: "\(userDefaultKey)")
     }
 }
+
+func resetHighScore() {
+    switch (timerDuration, chosenDifficulty) {
+        case (60, "easy") : highScoreUserDefault.set(0, forKey: "oneMinuteEasyHighScoreUserDefault")
+        case (120, "easy"): highScoreUserDefault.set(0, forKey: "twoMinutesEasyHighScoreUserDefault")
+        case (300, "easy"): highScoreUserDefault.set(0, forKey: "fiveMinutesEasyHighScoreUserDefault")
+        case (600, "easy"): highScoreUserDefault.set(0, forKey: "tenMinutesEasyHighScoreUserDefault")
+        
+        case (60, "medium"): highScoreUserDefault.set(0, forKey: "oneMinuteMediumHighScoreUserDefault")
+        case (120, "medium"): highScoreUserDefault.set(0, forKey: "twoMinutesMediumHighScoreUserDefault")
+        case (300, "medium"): highScoreUserDefault.set(0, forKey: "fiveMinutesMediumHighScoreUserDefault")
+        case (600, "medium"): highScoreUserDefault.set(0, forKey: "tenMinutesMediumHighScoreUserDefault")
+
+        case (60, "hard"): highScoreUserDefault.set(0, forKey: "oneMinuteHardHighScoreUserDefault")
+        case (120, "hard"): highScoreUserDefault.set(0, forKey: "twoMinutesHardHighScoreUserDefault")
+        case (300, "hard"): highScoreUserDefault.set(0, forKey: "fiveMinutesHardHighScoreUserDefault")
+        case (600, "hard"): highScoreUserDefault.set(0, forKey: "tenMinutesHardHighScoreUserDefault")
+
+        case (60, "expert"): highScoreUserDefault.set(0, forKey: "oneMinuteExpertHighScoreUserDefault")
+        case (120, "expert"): highScoreUserDefault.set(0, forKey: "twoMinutesExpertHighScoreUserDefault")
+        case (300, "expert"): highScoreUserDefault.set(0, forKey: "fiveMinutesExpertHighScoreUserDefault")
+        case (600, "expert"): highScoreUserDefault.set(0, forKey: "tenMinutesExpertHighScoreUserDefault")
+
+        default: print("Error in game settings switch")
+    }
+}
+
 
 func checkScoreAgainstHighScore() {
     switch (timerDuration, chosenDifficulty) {
@@ -155,35 +174,6 @@ func gameSettings(timeSetting: Int, difficultySetting: String) {
     }
     
 }
-
-
-
-//func saveGameSettings(timeSetting: Int, difficultySetting: String) {
-//    switch (timeSetting, difficultySetting) {
-//    case (60, "easy") : gameSettingsUserDefault.set(selectedDuration, forKey: "oneMinuteEasyGame")
-//    case (120, "easy"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesEasyGame")
-//    case (300, "easy"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesEasyGame")
-//    case (600, "easy"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesEasyGame")
-//    
-//    case (60, "medium"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesMediumGame")
-//    case (120, "medium"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesMediumGame")
-//    case (300, "medium"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesMediumGame")
-//    case (600, "medium"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesMediumGame")
-//        
-//    case (60, "hard"):  gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesHardGame")
-//    case (120, "hard"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesHardGame")
-//    case (300, "hard"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesHardGame")
-//    case (600, "hard"): gameSettingsUserDefault.set(selectedDuration, forKey: "MinutesHardGame")
-//
-//    case (60, "expert"): print("60 expert")
-//    case (120, "expert"): print("120 expert")
-//    case (300, "expert"): print("300 expert")
-//    case (600, "expert"): print("600 expert")
-//
-//    default: print("Error in game settings switch")
-//}
-//}
-
 
 
 func play(sound: String) {

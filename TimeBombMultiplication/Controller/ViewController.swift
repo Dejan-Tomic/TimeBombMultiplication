@@ -21,8 +21,6 @@ extension UITextField {
     }
 }
 
-//var timePassed = timerDuration
-
 
 class ViewController: UIViewController {
 
@@ -42,16 +40,13 @@ class ViewController: UIViewController {
         userAnswerTextField.isEnabled = false
         self.userAnswerTextField.addInputAccessoryView(title: "Done", target: self, selector: #selector(tapDone))
         timerLabel.text = "\(timerDuration)"
-       
         printHighScores()
 
     }
     
     func printHighScores() {
-//        print("High score is \(highscore)")
-
         print("1 minute easy score is \(oneMinuteEasyHighScore)") // Should be 25
-        print("1 minute medium score is \(oneMinuteMediumHighScore)") // Should be 6
+        print("1 minute medium score is \(oneMinuteMediumHighScore)") // Should be 9
         print("1 minute hard score is \(oneMinuteHardHighScore)") // Should be 8
         print("1 minute expert score is \(oneMinuteExpertHighScore)") // Should be 11
 
@@ -65,7 +60,7 @@ class ViewController: UIViewController {
         print("5 minutes hard score is \(fiveMinutesHardHighScore)") // Should be 10
         print("5 minutes expert score is \(fiveMinuteExpertHighScore)") // Should be 16
           
-        print("10 minutes easy score is \(tenMinutesEasyHighScore)") // Should be 32
+        print("10 minutes easy score is \(tenMinutesEasyHighScore)") // Should be 33
         print("10 minutes medium score is \(tenMinutesMediumHighScore)") // Should be 14
         print("10 minutes hard score is \(tenMinutesHardHighScore)") // Should be 13
         print("10 minutes expert score is \(tenMinuteExpertHighScore)") // Should be 17
@@ -93,7 +88,6 @@ class ViewController: UIViewController {
             play(sound: "wrongAnswer")
         }
         scoreLabel.text = "score: \(score)"
-//        setHighScore()
         checkScoreAgainstHighScore()
         
     }
@@ -115,7 +109,6 @@ class ViewController: UIViewController {
     
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
-        
     }
     
     
@@ -135,7 +128,6 @@ class ViewController: UIViewController {
             newGameButton.isHidden = false
             settingsButton.isEnabled = true
 
-//            setHighScore()
             checkScoreAgainstHighScore()
             newHighScoreAlert()
         }
@@ -143,7 +135,7 @@ class ViewController: UIViewController {
     
     
     func newHighScoreAlert() {
-        if score > highscore {
+        if score > currentHighScore {
             let alert = UIAlertController(title: "Congratulations!", message: "You've reached a new high score!", preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
