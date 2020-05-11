@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 
         print("2 minutes easy score is \(twoMinutesEasyHighScore)") // Should be 0
         print("2 minutes medium score is \(twoMinutesMediumHighScore)") // Should be 0
-        print("2 minutes hard score is \(twoMinutesHardHighScore)") // Should be 0
+        print("2 minutes hard score is \(twoMinutesHardHighScore)") // Should be 0 10
         print("2 minutes expert score is \(twoMinuteExpertHighScore)") // Inccorectly saves to 1 min expert
         
         print("5 minutes easy score is \(fiveMinutesEasyHighScore)") // Should be 0
