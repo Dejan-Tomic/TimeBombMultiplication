@@ -91,6 +91,8 @@ func checkScoreAgainstHighScore() {
     }
 }
 
+
+
 func calculateAnswer() {
     correctAnswer = firstNumber * secondNumber
     print("\(firstNumber) x \(secondNumber) = \(correctAnswer)")

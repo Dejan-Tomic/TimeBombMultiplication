@@ -84,6 +84,7 @@ class SettingsViewController: UIViewController {
         }
         durationUserDefault.set(selectedDuration, forKey: "durationUserDefault")
         gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
+        
     }
     
     
