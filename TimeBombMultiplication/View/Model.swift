@@ -15,20 +15,23 @@ var highScoreUserDefault = UserDefaults.standard
 var difficultyUserDefault = UserDefaults.standard
 var durationUserDefault = UserDefaults.standard
 
-var chosenDifficulty = "easy"
+
 var player: AVAudioPlayer?
 var timer = Timer()
 
 var seconds = 0
-var timerDuration = 60
+var timerDuration = durationUserDefault.integer(forKey: "durationUserDefault")
 var timeLeft = timerDuration
+var chosenDifficulty = "easy"
+//var chosenDifficulty = difficultyUserDefault.string(forKey: "difficultyUserDefault")
+
 var userAnswer = 0
 var firstNumber = 0
 var secondNumber = 0
 var correctAnswer = 0
 var score = 0
-var selectedDifficulty = 0
-var selectedDuration = 0
+var selectedDifficulty = difficultyUserDefault.integer(forKey: "difficultyUserDefault")
+var selectedDuration = durationUserDefault.integer(forKey: "selectedDurationUserDefault")
 var currentHighScore = 0
 var currentUserDefaultKey = ""
 
@@ -52,14 +55,19 @@ var twoMinuteExpertHighScore = highScoreUserDefault.integer(forKey: "twoMinutesE
 var fiveMinuteExpertHighScore = highScoreUserDefault.integer(forKey: "fiveMinutesExpertHighScoreUserDefault")
 var tenMinuteExpertHighScore = highScoreUserDefault.integer(forKey: "tenMinutesExpertHighScoreUserDefault")
 
+
 func updateHighScore(currentHighScore: Int, userDefaultKey: String) {
+    
     if score > currentHighScore {
+        
         highScoreUserDefault.set(score, forKey: "\(userDefaultKey)")
     }
 }
 
 func resetHighScore() {
+    
     switch (timerDuration, chosenDifficulty) {
+    
         case (60, "easy") : highScoreUserDefault.set(0, forKey: "oneMinuteEasyHighScoreUserDefault")
         case (120, "easy"): highScoreUserDefault.set(0, forKey: "twoMinutesEasyHighScoreUserDefault")
         case (300, "easy"): highScoreUserDefault.set(0, forKey: "fiveMinutesEasyHighScoreUserDefault")
@@ -86,7 +94,9 @@ func resetHighScore() {
 
 
 func checkScoreAgainstHighScore() {
+    
     switch (timerDuration, chosenDifficulty) {
+    
         case (60, "easy") : updateHighScore(currentHighScore: oneMinuteEasyHighScore, userDefaultKey: "oneMinuteEasyHighScoreUserDefault")
         case (120, "easy"): updateHighScore(currentHighScore: twoMinutesEasyHighScore, userDefaultKey: "twoMinutesEasyHighScoreUserDefault")
         case (300, "easy"): updateHighScore(currentHighScore: fiveMinutesEasyHighScore, userDefaultKey: "fiveMinutesEasyHighScoreUserDefault")
@@ -177,7 +187,9 @@ func gameSettings(timeSetting: Int, difficultySetting: String) {
 
 
 func play(sound: String) {
+    
     let path = Bundle.main.path(forResource: "\(sound).mp3", ofType: nil)!
+    
     let url = URL(fileURLWithPath: path)
     
     do {
@@ -185,7 +197,30 @@ func play(sound: String) {
         player?.play()
         
     } catch {
-        // couldn't load file :(
+        // couldn't load file
         print("Problem during playback")
     }
+}
+
+func printHighScores() {
+    
+    print("1 minute easy score is \(oneMinuteEasyHighScore)") // Should be 25
+    print("1 minute medium score is \(oneMinuteMediumHighScore)") // Should be 6
+    print("1 minute hard score is \(oneMinuteHardHighScore)") // Should be 8
+    print("1 minute expert score is \(oneMinuteExpertHighScore)") // Should be 11
+
+    print("2 minutes easy score is \(twoMinutesEasyHighScore)") // Should be 27
+    print("2 minutes medium score is \(twoMinutesMediumHighScore)") // Should be 7
+    print("2 minutes hard score is \(twoMinutesHardHighScore)") // Should be 9
+    print("2 minutes expert score is \(twoMinuteExpertHighScore)") // Should be 15
+    
+    print("5 minutes easy score is \(fiveMinutesEasyHighScore)") // Should be 30
+    print("5 minutes medium score is \(fiveMinutesMediumHighScore)") // Should be 12
+    print("5 minutes hard score is \(fiveMinutesHardHighScore)") // Should be 10
+    print("5 minutes expert score is \(fiveMinuteExpertHighScore)") // Should be 16
+      
+    print("10 minutes easy score is \(tenMinutesEasyHighScore)") // Should be 33
+    print("10 minutes medium score is \(tenMinutesMediumHighScore)") // Should be 14
+    print("10 minutes hard score is \(tenMinutesHardHighScore)") // Should be 13
+    print("10 minutes expert score is \(tenMinuteExpertHighScore)") // Should be 17
 }
