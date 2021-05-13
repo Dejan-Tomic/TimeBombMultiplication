@@ -9,21 +9,16 @@
 import Foundation
 import AVFoundation
 
-var gameSettingsUserDefault = UserDefaults.standard
-
 var highScoreUserDefault = UserDefaults.standard
 var difficultyUserDefault = UserDefaults.standard
 var durationUserDefault = UserDefaults.standard
 
-
 var player: AVAudioPlayer?
 var timer = Timer()
 
-var seconds = 0
 var timerDuration = durationUserDefault.integer(forKey: "durationUserDefault")
 var timeLeft = timerDuration
 var chosenDifficulty = "easy"
-//var chosenDifficulty = difficultyUserDefault.string(forKey: "difficultyUserDefault")
 
 var userAnswer = 0
 var firstNumber = 0

@@ -25,9 +25,7 @@ class SettingsViewController: UIViewController {
         durationSegementedControl.selectedSegmentIndex = selectedDuration
         
         difficultySegementedControl.selectedSegmentIndex = selectedDifficulty
-        
-//        difficultyLabel.selectedSegmentIndex = difficultyUserDefault.integer(forKey: "difficultyUserDefault")
-        
+                
         gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
                 
         }
@@ -90,9 +88,6 @@ class SettingsViewController: UIViewController {
             default: print("Error in game settings switch")
         }
     }
-    
-    
-
     
     
     @IBAction func resetHighscore(_ sender: UIButton) {

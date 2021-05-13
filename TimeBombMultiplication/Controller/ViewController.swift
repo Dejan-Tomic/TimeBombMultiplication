@@ -67,15 +67,6 @@ class ViewController: UIViewController {
         printHighScores()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        print("pre zent")
-//    }
-    
-    
-        
-    
-    
-    
     // 'Done' button above keyboard is tapped
     @objc func tapDone() {
         
