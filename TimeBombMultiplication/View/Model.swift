@@ -27,7 +27,8 @@ var correctAnswer = 0
 var score = 0
 var selectedDifficulty = difficultyUserDefault.integer(forKey: "difficultyUserDefault")
 var selectedDuration = durationUserDefault.integer(forKey: "selectedDurationUserDefault")
-var currentHighScore = 0
+//var currentHighScore = 0
+var currentHighScore = highScoreUserDefault.integer(forKey: "currentHighScore")
 var currentUserDefaultKey = ""
 
 var oneMinuteEasyHighScore = highScoreUserDefault.integer(forKey: "oneMinuteEasyHighScoreUserDefault")
@@ -51,13 +52,16 @@ var fiveMinuteExpertHighScore = highScoreUserDefault.integer(forKey: "fiveMinute
 var tenMinuteExpertHighScore = highScoreUserDefault.integer(forKey: "tenMinutesExpertHighScoreUserDefault")
 
 
-func updateHighScore(currentHighScore: Int, userDefaultKey: String) {
-    
-    if score > currentHighScore {
-        
-        highScoreUserDefault.set(score, forKey: "\(userDefaultKey)")
-    }
-}
+//func updateHighScore(currentHighScore: Int, userDefaultKey: String) {
+//
+//    if score > currentHighScore {
+//
+//        highScoreUserDefault.set(score, forKey: "\(userDefaultKey)")
+//    }
+//}
+
+currentHighScore
+
 
 func resetHighScore() {
     
