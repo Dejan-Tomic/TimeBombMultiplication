@@ -52,15 +52,15 @@ var fiveMinuteExpertHighScore = highScoreUserDefault.integer(forKey: "fiveMinute
 var tenMinuteExpertHighScore = highScoreUserDefault.integer(forKey: "tenMinutesExpertHighScoreUserDefault")
 
 
-//func updateHighScore(currentHighScore: Int, userDefaultKey: String) {
-//
-//    if score > currentHighScore {
-//
-//        highScoreUserDefault.set(score, forKey: "\(userDefaultKey)")
-//    }
-//}
+func updateHighScore(currentHighScore: Int, userDefaultKey: String) {
 
-currentHighScore
+    if score > currentHighScore {
+
+        highScoreUserDefault.set(score, forKey: "\(userDefaultKey)")
+    }
+}
+
+//currentHighScore()
 
 
 func resetHighScore() {
