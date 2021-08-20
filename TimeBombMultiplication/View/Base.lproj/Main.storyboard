@@ -65,7 +65,7 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="resetHighscore:" destination="dez-Ye-qk5" eventType="touchUpInside" id="LkK-T8-Nut"/>
+                                    <action selector="resetHighscoreButtonPressed:" destination="dez-Ye-qk5" eventType="touchUpInside" id="LkK-T8-Nut"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aer-XW-0un">

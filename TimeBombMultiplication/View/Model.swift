@@ -5,7 +5,7 @@
 //  Created by Dejan Tomic on 03/05/2020.
 //  Copyright © 2020 Dejan Tomic. All rights reserved.
 //
-
+    
 import Foundation
 import AVFoundation
 
@@ -27,7 +27,7 @@ var correctAnswer = 0
 var score = 0
 var selectedDifficulty = difficultyUserDefault.integer(forKey: "difficultyUserDefault")
 var selectedDuration = durationUserDefault.integer(forKey: "selectedDurationUserDefault")
-//var currentHighScore = 0
+
 var currentHighScore = highScoreUserDefault.integer(forKey: "currentHighScore")
 var currentUserDefaultKey = ""
 
@@ -57,10 +57,10 @@ func updateHighScore(currentHighScore: Int, userDefaultKey: String) {
     if score > currentHighScore {
 
         highScoreUserDefault.set(score, forKey: "\(userDefaultKey)")
+        //    printHighScores()
     }
+    //    printHighScores()
 }
-
-//currentHighScore()
 
 
 func resetHighScore() {
@@ -89,6 +89,7 @@ func resetHighScore() {
 
         default: print("Error in game settings switch")
     }
+    
 }
 
 
@@ -118,6 +119,8 @@ func checkScoreAgainstHighScore() {
 
         default: print("Error in game settings switch")
     }
+//    printHighScores()
+
 }
 
 
@@ -203,23 +206,23 @@ func play(sound: String) {
 
 func printHighScores() {
     
-    print("1 minute easy score is \(oneMinuteEasyHighScore)") // Should be 25
-    print("1 minute medium score is \(oneMinuteMediumHighScore)") // Should be 6
-    print("1 minute hard score is \(oneMinuteHardHighScore)") // Should be 8
-    print("1 minute expert score is \(oneMinuteExpertHighScore)") // Should be 11
+    print("1 minute easy score is \(oneMinuteEasyHighScore)")
+    print("1 minute medium score is \(oneMinuteMediumHighScore)")
+    print("1 minute hard score is \(oneMinuteHardHighScore)")
+    print("1 minute expert score is \(oneMinuteExpertHighScore)")
 
-    print("2 minutes easy score is \(twoMinutesEasyHighScore)") // Should be 27
-    print("2 minutes medium score is \(twoMinutesMediumHighScore)") // Should be 7
-    print("2 minutes hard score is \(twoMinutesHardHighScore)") // Should be 9
-    print("2 minutes expert score is \(twoMinuteExpertHighScore)") // Should be 15
+    print("2 minutes easy score is \(twoMinutesEasyHighScore)")
+    print("2 minutes medium score is \(twoMinutesMediumHighScore)")
+    print("2 minutes hard score is \(twoMinutesHardHighScore)")
+    print("2 minutes expert score is \(twoMinuteExpertHighScore)")
     
-    print("5 minutes easy score is \(fiveMinutesEasyHighScore)") // Should be 30
-    print("5 minutes medium score is \(fiveMinutesMediumHighScore)") // Should be 12
-    print("5 minutes hard score is \(fiveMinutesHardHighScore)") // Should be 10
-    print("5 minutes expert score is \(fiveMinuteExpertHighScore)") // Should be 16
+    print("5 minutes easy score is \(fiveMinutesEasyHighScore)")
+    print("5 minutes medium score is \(fiveMinutesMediumHighScore)")
+    print("5 minutes hard score is \(fiveMinutesHardHighScore)")
+    print("5 minutes expert score is \(fiveMinuteExpertHighScore)")
       
-    print("10 minutes easy score is \(tenMinutesEasyHighScore)") // Should be 33
-    print("10 minutes medium score is \(tenMinutesMediumHighScore)") // Should be 14
-    print("10 minutes hard score is \(tenMinutesHardHighScore)") // Should be 13
-    print("10 minutes expert score is \(tenMinuteExpertHighScore)") // Should be 17
+    print("10 minutes easy score is \(tenMinutesEasyHighScore)")
+    print("10 minutes medium score is \(tenMinutesMediumHighScore)")
+    print("10 minutes hard score is \(tenMinutesHardHighScore)")
+    print("10 minutes expert score is \(tenMinuteExpertHighScore)")
 }

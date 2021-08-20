@@ -22,10 +22,10 @@ extension UITextField {
         
         toolBar.isTranslucent = false
         
-        toolBar.barTintColor = UIColor(red: 223, green: 216, blue: 186, alpha: 1)
-        
-        toolBar.backgroundColor = UIColor(red: 223, green: 216, blue: 186, alpha: 1)
-        
+                toolBar.barTintColor = UIColor(red: 0.8745, green: 0.8470, blue: 0.729, alpha: 1)
+
+                toolBar.backgroundColor = UIColor(red: 0.8745, green: 0.8470, blue: 0.729, alpha: 1)
+
         toolBar.setItems([flexible, barButton], animated: false)
         
         self.inputAccessoryView = toolBar
@@ -53,6 +53,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Main screen loaded")
 
         displayQuestion()
         
@@ -64,7 +65,12 @@ class ViewController: UIViewController {
         
         timerLabel.text = "\(timerDuration)"
                 
-        printHighScores()
+//        printHighScores()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("Main screen appeared")
+
     }
     
     // 'Done' button above keyboard is tapped
@@ -98,9 +104,7 @@ class ViewController: UIViewController {
         }
         
         scoreLabel.text = "score: \(score)"
-        
-        checkScoreAgainstHighScore()
-        
+                
     }
     
     func displayQuestion() {
@@ -159,11 +163,10 @@ class ViewController: UIViewController {
             userAnswerTextField.isEnabled = false
             
             newGameButton.isHidden = false
-            
             settingsButton.isEnabled = true
 
             checkScoreAgainstHighScore()
-            
+            printHighScores()
             newHighScoreAlert()
         }
     }

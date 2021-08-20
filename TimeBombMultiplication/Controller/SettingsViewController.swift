@@ -19,16 +19,42 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        displayHighScore()
-                
-        durationSegementedControl.selectedSegmentIndex = selectedDuration
-        
-        difficultySegementedControl.selectedSegmentIndex = selectedDifficulty
-                
-        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
+        print("Settings screen loaded")
+//        displayHighScore()
+//        printHighScores()
+//
+//        durationSegementedControl.selectedSegmentIndex = selectedDuration
+//
+//        difficultySegementedControl.selectedSegmentIndex = selectedDifficulty
+//
+//        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
                 
         }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("Settings screen appeared")
+
+        super.viewDidAppear(false)
+        displayHighScore()
+        printHighScores()
+
+        durationSegementedControl.selectedSegmentIndex = selectedDuration
+
+        difficultySegementedControl.selectedSegmentIndex = selectedDifficulty
+
+        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
+    }
+    
+   
+    
+    @IBAction func resetHighscoreButtonPressed(_ sender: UIButton) {
+        
+        resetHighScore()
+        printHighScores()
+        displayHighScore()
+//        displayResetHighScore()
+        
+    }
     
     func displayHighScore() {
         
@@ -83,28 +109,14 @@ class SettingsViewController: UIViewController {
                                   currentHighScore = fiveMinuteExpertHighScore
                 
             case (600, "expert"): highScoreLabel.text = "High score: \(tenMinuteExpertHighScore)"
-                                  currentHighScore = tenMinuteExpertHighScore 
+                                  currentHighScore = tenMinuteExpertHighScore
 
             default: print("Error in game settings switch")
         }
     }
     
     
-    @IBAction func resetHighscore(_ sender: UIButton) {
-        
-        highScoreUserDefault.set(0, forKey: "oneMinuteMediumHighScore")
-//        resetHighScore()
-//        printHighScores()
-        
-        highScoreLabel.text = "High score: \(difficultyUserDefault.integer(forKey: "oneMinuteMediumHighScore"))"
-        print("1 minute medium score is \(oneMinuteMediumHighScore)") // Should be 6
-
-
-//        displayResetHighScore()
-//        displayHighScore()
-    }
-    
-    
+    // Not being used
     func displayResetHighScore() {
         
         switch (timerDuration, chosenDifficulty) {
