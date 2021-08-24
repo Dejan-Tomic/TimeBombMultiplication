@@ -20,6 +20,7 @@ var timerDuration = durationUserDefault.integer(forKey: "durationUserDefault")
 var timeLeft = timerDuration
 var chosenDifficulty = "easy"
 
+
 var userAnswer = 0
 var firstNumber = 0
 var secondNumber = 0

@@ -22,11 +22,11 @@ class SettingsViewController: UIViewController {
         print("Settings screen loaded")
 //        displayHighScore()
 //        printHighScores()
-//
-//        durationSegementedControl.selectedSegmentIndex = selectedDuration
-//
-//        difficultySegementedControl.selectedSegmentIndex = selectedDifficulty
-//
+
+        durationSegementedControl.selectedSegmentIndex = selectedDuration
+
+        difficultySegementedControl.selectedSegmentIndex = selectedDifficulty
+
 //        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
                 
         }
@@ -38,9 +38,6 @@ class SettingsViewController: UIViewController {
         displayHighScore()
         printHighScores()
 
-        durationSegementedControl.selectedSegmentIndex = selectedDuration
-
-        difficultySegementedControl.selectedSegmentIndex = selectedDifficulty
 
         gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
     }

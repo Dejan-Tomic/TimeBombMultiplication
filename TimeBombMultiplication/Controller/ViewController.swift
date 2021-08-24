@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         
         timerLabel.text = "\(timerDuration)"
                 
-//        printHighScores()
+        printHighScores()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -181,7 +181,7 @@ class ViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             
             self.present(alert, animated: true)
-        }
+        } 
     }
     
     
