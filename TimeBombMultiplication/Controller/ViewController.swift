@@ -66,6 +66,11 @@ class ViewController: UIViewController {
         timerLabel.text = "\(timerDuration)"
                 
         printHighScores()
+        print("Selected difficulty is \(selectedDifficulty)")
+        print("Selected duration is \(selectedDuration)")
+        print("Chosen difficulty is \(chosenDifficulty)")
+
+
     }
     
     override func viewDidAppear(_ animated: Bool) {

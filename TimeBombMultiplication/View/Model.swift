@@ -133,31 +133,23 @@ func calculateAnswer() {
 
 
 func nextQuestion(difficulty: String) {
-    let easyArray = [2,5,10]
-    let mediumArray = [3,4,8]
 
     switch difficulty {
     case "easy":
-        firstNumber = easyArray.randomElement()!
-        secondNumber = Int.random(in: 1...12)
+        firstNumber = [2,5,10].randomElement()!
         
     case "medium":
-        firstNumber = mediumArray.randomElement()!
-        secondNumber = Int.random(in: 1...12)
+        firstNumber = [3,4,8].randomElement()!
         
     case "hard":
         firstNumber = Int.random(in: 1...12)
-        secondNumber = Int.random(in: 1...12)
-        
-    case "expert":
-        firstNumber = Int.random(in: 12...99)
-        secondNumber = Int.random(in: 12...99)
 
     default:
-        firstNumber = easyArray.randomElement()!
-        secondNumber = Int.random(in: 1...12)
+        // difficulty: "expert"
+        firstNumber = Int.random(in: 12...99)
     }
-    
+    secondNumber = Int.random(in: 1...12)
+
 }
 
 
