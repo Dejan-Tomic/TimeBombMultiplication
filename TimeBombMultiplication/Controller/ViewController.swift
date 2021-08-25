@@ -83,7 +83,7 @@ class ViewController: UIViewController {
         
         self.view.endEditing(true)
         
-        checkAnswer()
+        rightOrWrongAnswerBuzzer()
         
         displayQuestion()
         
@@ -94,7 +94,7 @@ class ViewController: UIViewController {
     }
     
     
-    func checkAnswer() {
+    func rightOrWrongAnswerBuzzer() {
         
         if userAnswerTextField.text == String(correctAnswer) {
             
