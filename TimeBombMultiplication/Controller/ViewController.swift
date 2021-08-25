@@ -101,15 +101,14 @@ class ViewController: UIViewController {
             play(sound: "rightAnswer")
             
             score += 1
-            
+            scoreLabel.text = "score: \(score)"
+
         } else {
             
             play(sound: "wrongAnswer")
             
         }
-        
-        scoreLabel.text = "score: \(score)"
-                
+                        
     }
     
     func displayQuestion() {
