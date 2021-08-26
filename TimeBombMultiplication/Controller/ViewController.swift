@@ -99,7 +99,7 @@ class ViewController: UIViewController {
         if userAnswerTextField.text == String(correctAnswer) {
             
             play(sound: "rightAnswer")
-            
+
             score += 1
             scoreLabel.text = "score: \(score)"
 

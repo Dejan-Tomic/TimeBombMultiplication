@@ -59,6 +59,8 @@ func updateHighScore(currentHighScore: Int, userDefaultKey: String) {
 
         highScoreUserDefault.set(score, forKey: "\(userDefaultKey)")
         //    printHighScores()
+    } else {
+        print("Sorry not a highscore!")
     }
     //    printHighScores()
 }
