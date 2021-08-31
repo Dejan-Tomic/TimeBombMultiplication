@@ -64,6 +64,8 @@ class ViewController: UIViewController {
         self.userAnswerTextField.addInputAccessoryView(title: "Done", target: self, selector: #selector(tapDone))
         
         timerLabel.text = "\(timerDuration)"
+        
+        scoreLabel.isHidden = true
                 
         printHighScores()
         print("Selected difficulty is \(selectedDifficulty)")
@@ -126,6 +128,8 @@ class ViewController: UIViewController {
     
     @IBAction func newGameButtonPressed(_ sender: UIButton) {
         
+        scoreLabel.isHidden = false
+
         userAnswerTextField.isEnabled = true
         
         score = 0
@@ -133,6 +137,8 @@ class ViewController: UIViewController {
         scoreLabel.text = "score: \(score)"
         
         runTimer()
+        settingsButton.isHidden = true
+
     }
     
     
@@ -152,7 +158,8 @@ class ViewController: UIViewController {
             
             newGameButton.isHidden = true
             
-            settingsButton.isEnabled = false
+//            settingsButton.isEnabled = false
+            settingsButton.isHidden = true
             
         } else {
             
@@ -167,7 +174,9 @@ class ViewController: UIViewController {
             userAnswerTextField.isEnabled = false
             
             newGameButton.isHidden = false
-            settingsButton.isEnabled = true
+            settingsButton.isHidden = false
+            scoreLabel.isHidden = true
+
 
             checkScoreAgainstHighScore()
             printHighScores()
