@@ -56,9 +56,7 @@ class ViewController: UIViewController {
         print("Main screen loaded")
 
         displayQuestion()
-        
-        calculateAnswer()
-        
+                
         userAnswerTextField.isEnabled = false
         
         self.userAnswerTextField.addInputAccessoryView(title: "Done", target: self, selector: #selector(tapDone))
@@ -128,6 +126,9 @@ class ViewController: UIViewController {
     
     @IBAction func newGameButtonPressed(_ sender: UIButton) {
         
+        displayQuestion()
+        calculateAnswer()
+
         scoreLabel.isHidden = false
 
         userAnswerTextField.isEnabled = true
