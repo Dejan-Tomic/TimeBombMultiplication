@@ -15,17 +15,12 @@ extension UITextField {
     func addInputAccessoryView(title: String, target: Any, selector: Selector) {
         
         let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 44.0))
-        
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
         let barButton = UIBarButtonItem(title: title, style: .plain, target: target, action: selector)
         
         toolBar.isTranslucent = false
-        
-                toolBar.barTintColor = UIColor(red: 0.8745, green: 0.8470, blue: 0.729, alpha: 1)
-
-                toolBar.backgroundColor = UIColor(red: 0.8745, green: 0.8470, blue: 0.729, alpha: 1)
-
+        toolBar.barTintColor = UIColor(red: 0.8745, green: 0.8470, blue: 0.729, alpha: 1)
+        toolBar.backgroundColor = UIColor(red: 0.8745, green: 0.8470, blue: 0.729, alpha: 1)
         toolBar.setItems([flexible, barButton], animated: false)
         
         self.inputAccessoryView = toolBar
@@ -33,49 +28,38 @@ extension UITextField {
 }
 
 
-
 class ViewController: UIViewController {
 
     @IBOutlet weak var firstNumberLabel: UILabel!
-    
     @IBOutlet weak var secondNumberLabel: UILabel!
-    
     @IBOutlet weak var timerLabel: UILabel!
-    
     @IBOutlet weak var userAnswerTextField: UITextField!
-    
     @IBOutlet weak var scoreLabel: UILabel!
-    
     @IBOutlet weak var newGameButton: UIButton!
-    
     @IBOutlet weak var settingsButton: UIButton!
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         print("Main screen loaded")
-
         displayQuestion()
-                
+
         userAnswerTextField.isEnabled = false
-        
         self.userAnswerTextField.addInputAccessoryView(title: "Done", target: self, selector: #selector(tapDone))
         
         timerLabel.text = "\(timerDuration)"
         
         scoreLabel.isHidden = true
-                
-        printHighScores()
-        print("Selected difficulty is \(selectedDifficulty)")
-        print("Selected duration is \(selectedDuration)")
-        print("Chosen difficulty is \(chosenDifficulty)")
-
-
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        print("Main screen appeared")
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        print("Main screen will appear")
+        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
+        printHighScores()
+        print("Current highscore is \(currentHighScore)")
     }
     
     // 'Done' button above keyboard is tapped
@@ -84,13 +68,9 @@ class ViewController: UIViewController {
         self.view.endEditing(true)
         
         rightOrWrongAnswerBuzzer()
-        
         displayQuestion()
-        
         calculateAnswer()
-        
         userAnswerTextField.text = ""
-        
     }
     
     
@@ -99,28 +79,20 @@ class ViewController: UIViewController {
         if userAnswerTextField.text == String(correctAnswer) {
             
             play(sound: "rightAnswer")
-
             score += 1
             scoreLabel.text = "score: \(score)"
 
         } else {
             
             play(sound: "wrongAnswer")
-            
         }
-                        
     }
     
     func displayQuestion() {
         
-        print(chosenDifficulty)
-        
         nextQuestion(difficulty: chosenDifficulty)
-        
         firstNumberLabel.text = "\(firstNumber)"
-        
         secondNumberLabel.text = "\(secondNumber)"
-        
     }
     
     
@@ -178,7 +150,6 @@ class ViewController: UIViewController {
             settingsButton.isHidden = false
             scoreLabel.isHidden = true
 
-
             checkScoreAgainstHighScore()
             printHighScores()
             newHighScoreAlert()
@@ -197,7 +168,5 @@ class ViewController: UIViewController {
             self.present(alert, animated: true)
         } 
     }
-    
-    
 }
  

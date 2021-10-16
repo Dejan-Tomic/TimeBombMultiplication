@@ -24,11 +24,9 @@ class SettingsViewController: UIViewController {
 //        printHighScores()
 
         durationSegementedControl.selectedSegmentIndex = selectedDuration
-
         difficultySegementedControl.selectedSegmentIndex = selectedDifficulty
 
 //        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
-                
         }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,7 +35,6 @@ class SettingsViewController: UIViewController {
         super.viewDidAppear(false)
         displayHighScore()
         printHighScores()
-
 
         gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
     }
@@ -50,7 +47,6 @@ class SettingsViewController: UIViewController {
         printHighScores()
         displayHighScore()
 //        displayResetHighScore()
-        
     }
     
     func displayHighScore() {
@@ -197,8 +193,6 @@ class SettingsViewController: UIViewController {
         default: print("error")
                 timerDuration = 60
                 selectedDuration = 0
-
-                    
         }
         
 //        durationUserDefault.set(selectedDuration, forKey: "durationSegmentUserDefault")
@@ -209,7 +203,6 @@ class SettingsViewController: UIViewController {
         gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
 
         displayHighScore()
-        
     }
     
     
@@ -238,9 +231,5 @@ class SettingsViewController: UIViewController {
         gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
         
         displayHighScore()
-        
     }
-    
-    
-        
 }

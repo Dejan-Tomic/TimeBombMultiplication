@@ -56,13 +56,12 @@ var tenMinuteExpertHighScore = highScoreUserDefault.integer(forKey: "tenMinutesE
 func updateHighScore(currentHighScore: Int, userDefaultKey: String) {
 
     if score > currentHighScore {
-
+        
         highScoreUserDefault.set(score, forKey: "\(userDefaultKey)")
-        //    printHighScores()
+        
     } else {
         print("Sorry not a highscore!")
     }
-    //    printHighScores()
 }
 
 
@@ -92,7 +91,6 @@ func resetHighScore() {
 
         default: print("Error in game settings switch")
     }
-    
 }
 
 
@@ -122,8 +120,6 @@ func checkScoreAgainstHighScore() {
 
         default: print("Error in game settings switch")
     }
-//    printHighScores()
-
 }
 
 
@@ -151,35 +147,49 @@ func nextQuestion(difficulty: String) {
         firstNumber = Int.random(in: 12...99)
     }
     secondNumber = Int.random(in: 1...12)
-
 }
 
 
 func gameSettings(timeSetting: Int, difficultySetting: String) {
     switch (timeSetting, difficultySetting) {
-        case (60, "easy") : print("60 easy")
+        case (60, "easy"): print("60 easy")
+                           currentHighScore = oneMinuteEasyHighScore
         case (120, "easy"): print("120 easy")
+                            currentHighScore = twoMinutesEasyHighScore
         case (300, "easy"): print("300 easy")
+                            currentHighScore = fiveMinutesEasyHighScore
         case (600, "easy"): print("600 easy")
+                            currentHighScore = tenMinutesEasyHighScore
         
         case (60, "medium"): print("60 medium")
+                             currentHighScore = oneMinuteMediumHighScore
         case (120, "medium"): print("120 medium")
+                              currentHighScore = twoMinutesMediumHighScore
         case (300, "medium"): print("300 medium")
+                              currentHighScore = fiveMinutesMediumHighScore
         case (600, "medium"): print("600 medium")
+                              currentHighScore = tenMinutesMediumHighScore
 
         case (60, "hard"): print("60 hard")
+                           currentHighScore = oneMinuteHardHighScore
         case (120, "hard"): print("120 hard")
+                            currentHighScore = twoMinutesHardHighScore
         case (300, "hard"): print("300 hard")
+                            currentHighScore = fiveMinutesHardHighScore
         case (600, "hard"): print("600 hard")
+                            currentHighScore = tenMinutesHardHighScore
 
         case (60, "expert"): print("60 expert")
+                             currentHighScore = oneMinuteExpertHighScore
         case (120, "expert"): print("120 expert")
+                              currentHighScore = twoMinuteExpertHighScore
         case (300, "expert"): print("300 expert")
+                              currentHighScore = fiveMinuteExpertHighScore
         case (600, "expert"): print("600 expert")
+                              currentHighScore = tenMinuteExpertHighScore
 
         default: print("Error in game settings switch")
     }
-    
 }
 
 
