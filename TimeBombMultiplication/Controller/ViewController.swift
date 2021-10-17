@@ -57,7 +57,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         print("Main screen will appear")
-        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
+        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty ?? "easy")
         printHighScores()
         print("Current highscore is \(currentHighScore)")
     }
@@ -90,7 +90,7 @@ class ViewController: UIViewController {
     
     func displayQuestion() {
         
-        nextQuestion(difficulty: chosenDifficulty)
+        nextQuestion(difficulty: chosenDifficulty ?? "easy")
         firstNumberLabel.text = "\(firstNumber)"
         secondNumberLabel.text = "\(secondNumber)"
     }

@@ -18,7 +18,8 @@ var timer = Timer()
 
 var timerDuration = durationUserDefault.integer(forKey: "durationUserDefault")
 var timeLeft = timerDuration
-var chosenDifficulty = "easy"
+//var chosenDifficulty = "easy"
+var chosenDifficulty = difficultyUserDefault.string(forKey: "chosenDifficultyUserDefault")
 
 
 var userAnswer = 0
@@ -154,42 +155,92 @@ func gameSettings(timeSetting: Int, difficultySetting: String) {
     switch (timeSetting, difficultySetting) {
         case (60, "easy"): print("60 easy")
                            currentHighScore = oneMinuteEasyHighScore
+//                           selectedDifficulty = 0
+            difficultyUserDefault.set(0, forKey: "difficultyUserDefault")
+
         case (120, "easy"): print("120 easy")
                             currentHighScore = twoMinutesEasyHighScore
+//                            selectedDifficulty = 0
+            difficultyUserDefault.set(0, forKey: "difficultyUserDefault")
+
         case (300, "easy"): print("300 easy")
                             currentHighScore = fiveMinutesEasyHighScore
+//                            selectedDifficulty = 0
+            difficultyUserDefault.set(0, forKey: "difficultyUserDefault")
+
         case (600, "easy"): print("600 easy")
                             currentHighScore = tenMinutesEasyHighScore
+//                            selectedDifficulty = 0
+            difficultyUserDefault.set(0, forKey: "difficultyUserDefault")
+
         
         case (60, "medium"): print("60 medium")
                              currentHighScore = oneMinuteMediumHighScore
+//                             selectedDifficulty = 1
+            difficultyUserDefault.set(1, forKey: "difficultyUserDefault")
+
+
         case (120, "medium"): print("120 medium")
                               currentHighScore = twoMinutesMediumHighScore
+//                              selectedDifficulty = 1
+            difficultyUserDefault.set(1, forKey: "difficultyUserDefault")
+
         case (300, "medium"): print("300 medium")
                               currentHighScore = fiveMinutesMediumHighScore
+//                              selectedDifficulty = 1
+            difficultyUserDefault.set(1, forKey: "difficultyUserDefault")
+
         case (600, "medium"): print("600 medium")
                               currentHighScore = tenMinutesMediumHighScore
+//                              selectedDifficulty = 1
+            difficultyUserDefault.set(1, forKey: "difficultyUserDefault")
+
 
         case (60, "hard"): print("60 hard")
                            currentHighScore = oneMinuteHardHighScore
+//                           selectedDifficulty = 2
+            difficultyUserDefault.set(2, forKey: "difficultyUserDefault")
+
         case (120, "hard"): print("120 hard")
                             currentHighScore = twoMinutesHardHighScore
+//                            selectedDifficulty = 2
+            difficultyUserDefault.set(2, forKey: "difficultyUserDefault")
+
         case (300, "hard"): print("300 hard")
                             currentHighScore = fiveMinutesHardHighScore
+//                            selectedDifficulty = 2
+            difficultyUserDefault.set(2, forKey: "difficultyUserDefault")
+
         case (600, "hard"): print("600 hard")
                             currentHighScore = tenMinutesHardHighScore
+//                            selectedDifficulty = 2
+            difficultyUserDefault.set(2, forKey: "difficultyUserDefault")
+
 
         case (60, "expert"): print("60 expert")
                              currentHighScore = oneMinuteExpertHighScore
+//                             selectedDifficulty = 3
+            difficultyUserDefault.set(3, forKey: "difficultyUserDefault")
+
         case (120, "expert"): print("120 expert")
                               currentHighScore = twoMinuteExpertHighScore
+//                              selectedDifficulty = 3
+            difficultyUserDefault.set(3, forKey: "difficultyUserDefault")
+
         case (300, "expert"): print("300 expert")
                               currentHighScore = fiveMinuteExpertHighScore
+//                              selectedDifficulty = 3
+            difficultyUserDefault.set(3, forKey: "difficultyUserDefault")
+
         case (600, "expert"): print("600 expert")
                               currentHighScore = tenMinuteExpertHighScore
+//                              selectedDifficulty = 3
+            difficultyUserDefault.set(3, forKey: "difficultyUserDefault")
 
         default: print("Error in game settings switch")
     }
+//    difficultyUserDefault.set(selectedDifficulty, forKey: "difficultyUserDefault")
+
 }
 
 

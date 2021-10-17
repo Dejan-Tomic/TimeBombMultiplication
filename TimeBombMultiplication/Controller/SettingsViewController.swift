@@ -16,30 +16,16 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var durationSegementedControl: UISegmentedControl!
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        print("Settings screen loaded")
-//        displayHighScore()
-//        printHighScores()
 
-        durationSegementedControl.selectedSegmentIndex = selectedDuration
-        difficultySegementedControl.selectedSegmentIndex = selectedDifficulty
-
-//        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
-        }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        print("Settings screen appeared")
-
-        super.viewDidAppear(false)
+    override func viewWillAppear(_ animated: Bool) {
+        print("Settings screen will appear")
         displayHighScore()
         printHighScores()
-
-        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
+        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty ?? "easy")
+        durationSegementedControl.selectedSegmentIndex = selectedDuration
+        difficultySegementedControl.selectedSegmentIndex = selectedDifficulty
+        
     }
-    
-   
     
     @IBAction func resetHighscoreButtonPressed(_ sender: UIButton) {
         
@@ -196,11 +182,10 @@ class SettingsViewController: UIViewController {
         }
         
 //        durationUserDefault.set(selectedDuration, forKey: "durationSegmentUserDefault")
-
         durationUserDefault.set(timerDuration, forKey: "durationUserDefault")
         durationUserDefault.set(selectedDuration, forKey: "selectedDurationUserDefault")
 
-        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
+        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty ?? "easy")
 
         displayHighScore()
     }
@@ -214,21 +199,21 @@ class SettingsViewController: UIViewController {
             
         case 1: chosenDifficulty = "medium"
                 selectedDifficulty = 1
-            
+
         case 2: chosenDifficulty = "hard"
                 selectedDifficulty = 2
             
         case 3: chosenDifficulty = "expert"
                 selectedDifficulty = 3
-            
+
         default: chosenDifficulty = "easy"
                  selectedDifficulty = 0
-
         }
         
         difficultyUserDefault.set(selectedDifficulty, forKey: "difficultyUserDefault")
-        
-        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty)
+        difficultyUserDefault.set(chosenDifficulty, forKey: "chosenDifficultyUserDefault")
+
+        gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty ?? "easy")
         
         displayHighScore()
     }
