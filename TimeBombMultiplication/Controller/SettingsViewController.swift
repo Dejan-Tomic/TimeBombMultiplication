@@ -11,20 +11,17 @@ import UIKit
 class SettingsViewController: UIViewController {
         
     @IBOutlet weak var highScoreLabel: UILabel!
-    
     @IBOutlet weak var difficultySegementedControl: UISegmentedControl!
-    
     @IBOutlet weak var durationSegementedControl: UISegmentedControl!
     
-
     override func viewWillAppear(_ animated: Bool) {
+        
         print("Settings screen will appear")
-        displayHighScore()
         printHighScores()
         gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty ?? "easy")
         durationSegementedControl.selectedSegmentIndex = selectedDuration
         difficultySegementedControl.selectedSegmentIndex = selectedDifficulty
-        
+        displayHighScore()
     }
     
     @IBAction func resetHighscoreButtonPressed(_ sender: UIButton) {
@@ -97,7 +94,7 @@ class SettingsViewController: UIViewController {
     
     // Not being used
     func displayResetHighScore() {
-        
+
         switch (timerDuration, chosenDifficulty) {
         case (60, "easy") : highScoreLabel.text = "High score: 0"
                             currentHighScore = oneMinuteEasyHighScore

@@ -18,7 +18,6 @@ var timer = Timer()
 
 var timerDuration = durationUserDefault.integer(forKey: "durationUserDefault")
 var timeLeft = timerDuration
-//var chosenDifficulty = "easy"
 var chosenDifficulty = difficultyUserDefault.string(forKey: "chosenDifficultyUserDefault")
 
 

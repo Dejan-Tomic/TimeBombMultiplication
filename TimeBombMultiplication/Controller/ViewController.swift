@@ -49,7 +49,6 @@ class ViewController: UIViewController {
         self.userAnswerTextField.addInputAccessoryView(title: "Done", target: self, selector: #selector(tapDone))
         
         timerLabel.text = "\(timerDuration)"
-        
         scoreLabel.isHidden = true
     }
     
@@ -57,6 +56,8 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         print("Main screen will appear")
+        print(" At launch of app score is: \(score), and current high score is: \(currentHighScore)")
+
         gameSettings(timeSetting: timerDuration, difficultySetting: chosenDifficulty ?? "easy")
         printHighScores()
         print("Current highscore is \(currentHighScore)")
@@ -66,7 +67,6 @@ class ViewController: UIViewController {
     @objc func tapDone() {
         
         self.view.endEditing(true)
-        
         rightOrWrongAnswerBuzzer()
         displayQuestion()
         calculateAnswer()
@@ -126,20 +126,15 @@ class ViewController: UIViewController {
         if timeLeft > 0 {
             
             timeLeft -= 1
-            
             timerLabel.text = "\(timeLeft)"
-            
             newGameButton.isHidden = true
-            
-//            settingsButton.isEnabled = false
             settingsButton.isHidden = true
             
         } else {
             
             play(sound: "alarm")
-            
             timer.invalidate()
-            
+
             userAnswerTextField.resignFirstResponder()
             
             timeLeft = timerDuration
@@ -149,7 +144,8 @@ class ViewController: UIViewController {
             newGameButton.isHidden = false
             settingsButton.isHidden = false
             scoreLabel.isHidden = true
-
+            
+            print(" At end of game score is: \(score), and current high score is: \(currentHighScore)")
             checkScoreAgainstHighScore()
             printHighScores()
             newHighScoreAlert()
